@@ -30,3 +30,5 @@ class OnRepetido extends AppEvent {
   final Cromo cromo;
   final int cantidad;
 }
+
+class OnSetRepetidos extends AppEvent {}

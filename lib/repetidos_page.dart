@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mundial_cromos/logic/app_bloc.dart';
 import 'package:mundial_cromos/models/cromo.dart';
-import 'package:mundial_cromos/seccion_page.dart';
+import 'package:mundial_cromos/widgets/cromo_tile.dart';
 
 class RepetidosPage extends StatelessWidget {
   const RepetidosPage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class RepetidosPage extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         List<Cromo> repetidos = calcularRepetidos(state);
-        state.album!.repetidos_total = repetidos.length;
+        context.read<AppBloc>().add(OnSetRepetidos());
         return Scaffold(
             appBar: AppBar(
               title: const Text('Repetidos'),
@@ -56,9 +56,11 @@ class RepetidosPage extends StatelessWidget {
 
   List<Cromo> calcularRepetidos(AppState state) {
     List<Cromo> listado = [];
+    var cantidad = 0;
     for (var seccion in state.album!.secciones) {
       for (var cromo in seccion.cromos) {
         if (cromo.existe && cromo.repetido > 0) {
+          cantidad = cantidad + cromo.repetido;
           listado.add(cromo);
         }
       }
@@ -66,10 +68,15 @@ class RepetidosPage extends StatelessWidget {
     for (var grupo in state.album!.grupos) {
       for (var equipo in grupo.equipos) {
         for (var cromo in equipo.cromos) {
-          if (cromo.existe && cromo.repetido > 0) listado.add(cromo);
+          if (cromo.existe && cromo.repetido > 0) {
+            cantidad = cantidad + cromo.repetido;
+
+            listado.add(cromo);
+          }
         }
       }
     }
+    state.album!.repetidos_total = cantidad;
 
     return listado;
   }

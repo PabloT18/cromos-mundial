@@ -18,6 +18,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<OnGetCromo>(_onGetCromo);
     on<OnGetequipoSelect>(_onGetequipoSelect);
     on<OnRepetido>(_onRepetido);
+    on<OnSetRepetidos>(_onSetRepetidos);
   }
 
   static Box _getBox() => Hive.box('internalData');
@@ -106,6 +107,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     state.album!.repetidos_total =
         state.album!.repetidos_total + event.cantidad;
     saveData(state.album!);
+    emit(state.copyWith());
+  }
+
+  FutureOr<void> _onSetRepetidos(OnSetRepetidos event, Emitter<AppState> emit) {
     emit(state.copyWith());
   }
 }

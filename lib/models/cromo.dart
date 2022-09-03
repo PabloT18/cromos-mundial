@@ -56,6 +56,29 @@ class Grupo {
         "nombre": nombre,
         "equipos": List<dynamic>.from(equipos.map((x) => x.toJson())),
       };
+
+  @override
+  String toString() {
+    return nombre;
+  }
+
+  bool hasRepetidos() {
+    for (var equipo in equipos) {
+      if (equipo.hasRepetidos()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool hasCromos() {
+    for (var equipo in equipos) {
+      if (equipo.catidad > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 class Equipo {
@@ -89,6 +112,24 @@ class Equipo {
         "catidad": catidad,
         "cromos": List<dynamic>.from(cromos.map((x) => x.toJson())),
       };
+
+  @override
+  String toString() {
+    return '${codigoPais.isNotEmpty ? codigoAlbum : ''} $nombre = $catidad';
+  }
+
+  String toString2() {
+    return '${codigoPais.isNotEmpty ? codigoAlbum : ''} $nombre';
+  }
+
+  bool hasRepetidos() {
+    for (Cromo cromo in cromos) {
+      if (cromo.existe && cromo.repetido > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 class Cromo {
@@ -117,6 +158,15 @@ class Cromo {
         "existe": existe,
         "repetido": repetido,
       };
+
+  @override
+  String toString() {
+    return '$codigo - $nombre';
+  }
+
+  String toString2() {
+    return '$codigo - $nombre = $repetido';
+  }
 }
 
 class Data {
@@ -181,13 +231,13 @@ class Data {
         "cromos": [
           {
             "codigo": "FWC8",
-            "nombre": "  Ahmad Bin Ali Stadium",
+            "nombre": "Ahmad Bin Ali Stadium",
             "existe": false,
             "repetido": 0
           },
           {
             "codigo": "FWC9",
-            "nombre": "  Al Janoub Stadium",
+            "nombre": "Al Janoub Stadium",
             "existe": false,
             "repetido": 0
           },
@@ -699,49 +749,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "NED1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED3",
-                "nombre": "  Justin Bijlow",
+                "nombre": "Justin Bijlow",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED4",
-                "nombre": "  Jasper Cillessen",
+                "nombre": "Jasper Cillessen",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED5",
-                "nombre": "  Daley Blind",
+                "nombre": "Daley Blind",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED6",
-                "nombre": "  Matthijs de Ligt",
+                "nombre": "Matthijs de Ligt",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED7",
-                "nombre": "  Stefan de Vrij",
+                "nombre": "Stefan de Vrij",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED8",
-                "nombre": "  Denzel Dumfries",
+                "nombre": "Denzel Dumfries",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "NED9",
-                "nombre": "  Virgil van Dijk",
+                "nombre": "Virgil van Dijk",
                 "existe": false,
                 "repetido": 0
               },
@@ -826,49 +876,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "ENG1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG3",
-                "nombre": "  Jordan Pickford",
+                "nombre": "Jordan Pickford",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG4",
-                "nombre": "  Aaron Ramsdale",
+                "nombre": "Aaron Ramsdale",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG5",
-                "nombre": "  Trent Alexander-Arnold",
+                "nombre": "Trent Alexander-Arnold",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG6",
-                "nombre": "  Conor Coady",
+                "nombre": "Conor Coady",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG7",
-                "nombre": "  Harry Maguire",
+                "nombre": "Harry Maguire",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG8",
-                "nombre": "  Luke Shaw",
+                "nombre": "Luke Shaw",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ENG9",
-                "nombre": "  John Stones",
+                "nombre": "John Stones",
                 "existe": false,
                 "repetido": 0
               },
@@ -948,49 +998,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "IRN1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN3",
-                "nombre": "  Amir Abedzadeh",
+                "nombre": "Amir Abedzadeh",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN4",
-                "nombre": "  Alireza Beiranvand",
+                "nombre": "Alireza Beiranvand",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN5",
-                "nombre": "  Ehsan Hajsafi",
+                "nombre": "Ehsan Hajsafi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN6",
-                "nombre": "  Majid Hosseini",
+                "nombre": "Majid Hosseini",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN7",
-                "nombre": "  Hossein Kanaani",
+                "nombre": "Hossein Kanaani",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN8",
-                "nombre": "  Shoja Khalilzadeh",
+                "nombre": "Shoja Khalilzadeh",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "IRN9",
-                "nombre": "  Milad Mohammadi",
+                "nombre": "Milad Mohammadi",
                 "existe": false,
                 "repetido": 0
               },
@@ -1070,49 +1120,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "USA1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA3",
-                "nombre": "  Matt Turner",
+                "nombre": "Matt Turner",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA4",
-                "nombre": "  Zack Steffen",
+                "nombre": "Zack Steffen",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA5",
-                "nombre": "  Sergiño Dest",
+                "nombre": "Sergiño Dest",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA6",
-                "nombre": "  Aaron Long",
+                "nombre": "Aaron Long",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA7",
-                "nombre": "  Chris Richards",
+                "nombre": "Chris Richards",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA8",
-                "nombre": "  Antonee Robinson",
+                "nombre": "Antonee Robinson",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "USA9",
-                "nombre": "  DeAndre Yedlin",
+                "nombre": "DeAndre Yedlin",
                 "existe": false,
                 "repetido": 0
               },
@@ -1192,49 +1242,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "WAL1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL3",
-                "nombre": "  Danny Ward",
+                "nombre": "Danny Ward",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL4",
-                "nombre": "  Wayne Hennessey",
+                "nombre": "Wayne Hennessey",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL5",
-                "nombre": "  Ethan Ampadu",
+                "nombre": "Ethan Ampadu",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL6",
-                "nombre": "  Ben Davies",
+                "nombre": "Ben Davies",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL7",
-                "nombre": "  Chris Gunter",
+                "nombre": "Chris Gunter",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL8",
-                "nombre": "  Chris Mepham",
+                "nombre": "Chris Mepham",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "WAL9",
-                "nombre": "  Connor Roberts",
+                "nombre": "Connor Roberts",
                 "existe": false,
                 "repetido": 0
               },
@@ -1319,49 +1369,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "ARG1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG3",
-                "nombre": "  Emiliano Martínez",
+                "nombre": "Emiliano Martínez",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG4",
-                "nombre": "  Franco Armani",
+                "nombre": "Franco Armani",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG5",
-                "nombre": "  Marcos Acuña",
+                "nombre": "Marcos Acuña",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG6",
-                "nombre": "  Nahuel Molina",
+                "nombre": "Nahuel Molina",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG7",
-                "nombre": "  Nicolás Otamendi",
+                "nombre": "Nicolás Otamendi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG8",
-                "nombre": "  Germán Pezzella",
+                "nombre": "Germán Pezzella",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ARG9",
-                "nombre": "  Cristian Romero",
+                "nombre": "Cristian Romero",
                 "existe": false,
                 "repetido": 0
               },
@@ -1441,49 +1491,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "KSA1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA3",
-                "nombre": "  Mohammed Al-Owais",
+                "nombre": "Mohammed Al-Owais",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA4",
-                "nombre": "  Mohammed Al-Rubaie",
+                "nombre": "Mohammed Al-Rubaie",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA5",
-                "nombre": "  Abdulelah Al-Amri",
+                "nombre": "Abdulelah Al-Amri",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA6",
-                "nombre": "  Ali Al-Boleahi",
+                "nombre": "Ali Al-Boleahi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA7",
-                "nombre": "  Mohammed Al-Burayk",
+                "nombre": "Mohammed Al-Burayk",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA8",
-                "nombre": "  Sultan Al-Ghannam",
+                "nombre": "Sultan Al-Ghannam",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KSA9",
-                "nombre": "  Yasser Al-Shahrani",
+                "nombre": "Yasser Al-Shahrani",
                 "existe": false,
                 "repetido": 0
               },
@@ -1563,49 +1613,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "MEX1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX3",
-                "nombre": "  Guillermo Ochoa",
+                "nombre": "Guillermo Ochoa",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX4",
-                "nombre": "  Alfredo Talavera",
+                "nombre": "Alfredo Talavera",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX5",
-                "nombre": "  Néstor Araújo",
+                "nombre": "Néstor Araújo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX6",
-                "nombre": "  Jesús Gallardo",
+                "nombre": "Jesús Gallardo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX7",
-                "nombre": "  César Montes",
+                "nombre": "César Montes",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX8",
-                "nombre": "  Héctor Moreno",
+                "nombre": "Héctor Moreno",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MEX9",
-                "nombre": "  Luis Romo",
+                "nombre": "Luis Romo",
                 "existe": false,
                 "repetido": 0
               },
@@ -1685,49 +1735,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "POL1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL3",
-                "nombre": "  Wojciech Szczęsny",
+                "nombre": "Wojciech Szczęsny",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL4",
-                "nombre": "  Łukasz Skorupski",
+                "nombre": "Łukasz Skorupski",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL5",
-                "nombre": "  Jan Bednarek",
+                "nombre": "Jan Bednarek",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL6",
-                "nombre": "  Bartosz Bereszyński",
+                "nombre": "Bartosz Bereszyński",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL7",
-                "nombre": "  Matty Cash",
+                "nombre": "Matty Cash",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL8",
-                "nombre": "  Kamil Glik",
+                "nombre": "Kamil Glik",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POL9",
-                "nombre": "  Tymoteusz Puchacz",
+                "nombre": "Tymoteusz Puchacz",
                 "existe": false,
                 "repetido": 0
               },
@@ -1812,25 +1862,25 @@ class Data {
             "cromos": [
               {
                 "codigo": "FRA1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "FRA3",
-                "nombre": "  Hugo Lloris",
+                "nombre": "Hugo Lloris",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "FRA4",
-                "nombre": "  Mike Maignan",
+                "nombre": "Mike Maignan",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "FRA5",
-                "nombre": "  Lucas Hernández",
+                "nombre": "Lucas Hernández",
                 "existe": false,
                 "repetido": 0
               },
@@ -1842,19 +1892,19 @@ class Data {
               },
               {
                 "codigo": "FRA7",
-                "nombre": "  Presnel Kimpembe",
+                "nombre": "Presnel Kimpembe",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "FRA8",
-                "nombre": "  Jules Koundé",
+                "nombre": "Jules Koundé",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "FRA9",
-                "nombre": "  Benjamin Pavard",
+                "nombre": "Benjamin Pavard",
                 "existe": false,
                 "repetido": 0
               },
@@ -1934,49 +1984,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "AUS1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS3",
-                "nombre": "  Mathew Ryan",
+                "nombre": "Mathew Ryan",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS4",
-                "nombre": "  Andrew Redmayne",
+                "nombre": "Andrew Redmayne",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS5",
-                "nombre": "  Aziz Behich",
+                "nombre": "Aziz Behich",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS6",
-                "nombre": "  Miloš Degenek",
+                "nombre": "Miloš Degenek",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS7",
-                "nombre": "  Rhyan Grant",
+                "nombre": "Rhyan Grant",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS8",
-                "nombre": "  Joel King",
+                "nombre": "Joel King",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "AUS9",
-                "nombre": "  Trent Sainsbury",
+                "nombre": "Trent Sainsbury",
                 "existe": false,
                 "repetido": 0
               },
@@ -2056,49 +2106,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "DEN1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN3",
-                "nombre": "  Kasper Schmeichel",
+                "nombre": "Kasper Schmeichel",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN4",
-                "nombre": "  Frederik Rønnow",
+                "nombre": "Frederik Rønnow",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN5",
-                "nombre": "  Andreas Christensen",
+                "nombre": "Andreas Christensen",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN6",
-                "nombre": "  Simon Kjær",
+                "nombre": "Simon Kjær",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN7",
-                "nombre": "  Joakim Mæhle",
+                "nombre": "Joakim Mæhle",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN8",
-                "nombre": "  Jens Stryger Larsen",
+                "nombre": "Jens Stryger Larsen",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "DEN9",
-                "nombre": "  Jannik Vestergaard",
+                "nombre": "Jannik Vestergaard",
                 "existe": false,
                 "repetido": 0
               },
@@ -2178,49 +2228,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "TUN1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN3",
-                "nombre": "  Bechir Ben Saïd",
+                "nombre": "Bechir Ben Saïd",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN4",
-                "nombre": "  Farouk Ben Mustapha",
+                "nombre": "Farouk Ben Mustapha",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN5",
-                "nombre": "  Dylan Bronn",
+                "nombre": "Dylan Bronn",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN6",
-                "nombre": "  Mohamed Dräger",
+                "nombre": "Mohamed Dräger",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN7",
-                "nombre": "  Bilel Ifa",
+                "nombre": "Bilel Ifa",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN8",
-                "nombre": "  Ali Maâloul",
+                "nombre": "Ali Maâloul",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "TUN9",
-                "nombre": "  Hamza Mathlouthi",
+                "nombre": "Hamza Mathlouthi",
                 "existe": false,
                 "repetido": 0
               },
@@ -2305,49 +2355,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "ESP1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP3",
-                "nombre": "  Unai Simón",
+                "nombre": "Unai Simón",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP4",
-                "nombre": "  Robert Sánchez",
+                "nombre": "Robert Sánchez",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP5",
-                "nombre": "  César Azpilicueta",
+                "nombre": "César Azpilicueta",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP6",
-                "nombre": "  Eric García",
+                "nombre": "Eric García",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP7",
-                "nombre": "  Jordi Alba",
+                "nombre": "Jordi Alba",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP8",
-                "nombre": "  Aymeric Laporte",
+                "nombre": "Aymeric Laporte",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "ESP9",
-                "nombre": "  Pau Torres",
+                "nombre": "Pau Torres",
                 "existe": false,
                 "repetido": 0
               },
@@ -2427,49 +2477,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "CRC1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC3",
-                "nombre": "  Keylor Navas",
+                "nombre": "Keylor Navas",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC4",
-                "nombre": "  Leonel Moreira",
+                "nombre": "Leonel Moreira",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC5",
-                "nombre": "  Ricardo Blanco",
+                "nombre": "Ricardo Blanco",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC6",
-                "nombre": "  Francisco Calvo",
+                "nombre": "Francisco Calvo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC7",
-                "nombre": "  Óscar Duarte",
+                "nombre": "Óscar Duarte",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC8",
-                "nombre": "  Keysher Fuller",
+                "nombre": "Keysher Fuller",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRC9",
-                "nombre": "  Bryan Oviedo",
+                "nombre": "Bryan Oviedo",
                 "existe": false,
                 "repetido": 0
               },
@@ -2549,49 +2599,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "GER1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER3",
-                "nombre": "  Manuel Neuer",
+                "nombre": "Manuel Neuer",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER4",
-                "nombre": "  Marc-André ter Stegen",
+                "nombre": "Marc-André ter Stegen",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER5",
-                "nombre": "  Matthias Ginter",
+                "nombre": "Matthias Ginter",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER6",
-                "nombre": "  Robin Gosens",
+                "nombre": "Robin Gosens",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER7",
-                "nombre": "  Thilo Kehrer",
+                "nombre": "Thilo Kehrer",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER8",
-                "nombre": "  David Raum",
+                "nombre": "David Raum",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GER9",
-                "nombre": "  Antonio Rüdiger",
+                "nombre": "Antonio Rüdiger",
                 "existe": false,
                 "repetido": 0
               },
@@ -2671,49 +2721,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "JPN1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN3",
-                "nombre": "  Shuichi Gonda",
+                "nombre": "Shuichi Gonda",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN4",
-                "nombre": "  Eiji Kawashima",
+                "nombre": "Eiji Kawashima",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN5",
-                "nombre": "  Yuto Nagatomo",
+                "nombre": "Yuto Nagatomo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN6",
-                "nombre": "  Yuta Nakayama",
+                "nombre": "Yuta Nakayama",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN7",
-                "nombre": "  Takehiro Tomiyasu",
+                "nombre": "Takehiro Tomiyasu",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN8",
-                "nombre": "  Miki Yamane",
+                "nombre": "Miki Yamane",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "JPN9",
-                "nombre": "  Maya Yoshida",
+                "nombre": "Maya Yoshida",
                 "existe": false,
                 "repetido": 0
               },
@@ -2798,49 +2848,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "BEL1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL3",
-                "nombre": "  Thibaut Courtois",
+                "nombre": "Thibaut Courtois",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL4",
-                "nombre": "  Simon Mignolet",
+                "nombre": "Simon Mignolet",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL5",
-                "nombre": "  Toby Alderweireld",
+                "nombre": "Toby Alderweireld",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL6",
-                "nombre": "  Timothy Castagne",
+                "nombre": "Timothy Castagne",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL7",
-                "nombre": "  Jason Denayer",
+                "nombre": "Jason Denayer",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL8",
-                "nombre": "  Thomas Meunier",
+                "nombre": "Thomas Meunier",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BEL9",
-                "nombre": "  Jan Vertonghen",
+                "nombre": "Jan Vertonghen",
                 "existe": false,
                 "repetido": 0
               },
@@ -2920,49 +2970,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "CAN1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN3",
-                "nombre": "  Milan Borjan",
+                "nombre": "Milan Borjan",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN4",
-                "nombre": "  Maxime Crépeau",
+                "nombre": "Maxime Crépeau",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN5",
-                "nombre": "  Samuel Adekugbe",
+                "nombre": "Samuel Adekugbe",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN6",
-                "nombre": "  Doneil Henry",
+                "nombre": "Doneil Henry",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN7",
-                "nombre": "  Alistair Johnston",
+                "nombre": "Alistair Johnston",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN8",
-                "nombre": "  Richie Laryea",
+                "nombre": "Richie Laryea",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CAN9",
-                "nombre": "  Kamal Miller",
+                "nombre": "Kamal Miller",
                 "existe": false,
                 "repetido": 0
               },
@@ -3042,49 +3092,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "MAR1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR3",
-                "nombre": "  Yassine Bounou",
+                "nombre": "Yassine Bounou",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR4",
-                "nombre": "  Munir Mohamedi",
+                "nombre": "Munir Mohamedi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR5",
-                "nombre": "  Nayef Aguerd",
+                "nombre": "Nayef Aguerd",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR6",
-                "nombre": "  Achraf Hakimi",
+                "nombre": "Achraf Hakimi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR7",
-                "nombre": "  Adam Masina",
+                "nombre": "Adam Masina",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR8",
-                "nombre": "  Samy Mmaee",
+                "nombre": "Samy Mmaee",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "MAR9",
-                "nombre": "  Romain Saïss",
+                "nombre": "Romain Saïss",
                 "existe": false,
                 "repetido": 0
               },
@@ -3164,49 +3214,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "CRO1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO3",
-                "nombre": "  Dominik Livaković",
+                "nombre": "Dominik Livaković",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO4",
-                "nombre": "  Ivica Ivušić",
+                "nombre": "Ivica Ivušić",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO5",
-                "nombre": "  Duje Ćaleta-Car",
+                "nombre": "Duje Ćaleta-Car",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO6",
-                "nombre": "  Joško Gvardiol",
+                "nombre": "Joško Gvardiol",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO7",
-                "nombre": "  Josip Juranović",
+                "nombre": "Josip Juranović",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO8",
-                "nombre": "  Dejan Lovren",
+                "nombre": "Dejan Lovren",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CRO9",
-                "nombre": "  Borna Sosa",
+                "nombre": "Borna Sosa",
                 "existe": false,
                 "repetido": 0
               },
@@ -3291,49 +3341,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "BRA1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA3",
-                "nombre": "  Alisson",
+                "nombre": "Alisson",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA4",
-                "nombre": "  Ederson",
+                "nombre": "Ederson",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA5",
-                "nombre": "  Alex Sandro",
+                "nombre": "Alex Sandro",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA6",
-                "nombre": "  Danilo",
+                "nombre": "Danilo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA7",
-                "nombre": "  Éder Militão",
+                "nombre": "Éder Militão",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA8",
-                "nombre": "  Marquinhos",
+                "nombre": "Marquinhos",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "BRA9",
-                "nombre": "  Thiago Silva",
+                "nombre": "Thiago Silva",
                 "existe": false,
                 "repetido": 0
               },
@@ -3413,49 +3463,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "SRB1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB3",
-                "nombre": "  Predrag Rajković",
+                "nombre": "Predrag Rajković",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB4",
-                "nombre": "  Vanja Milinković-Savić",
+                "nombre": "Vanja Milinković-Savić",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB5",
-                "nombre": "  Nikola Milenković",
+                "nombre": "Nikola Milenković",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB6",
-                "nombre": "  Strahinja Pavlović",
+                "nombre": "Strahinja Pavlović",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB7",
-                "nombre": "  Miloš Veljković",
+                "nombre": "Miloš Veljković",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB8",
-                "nombre": "  Filip Đuričić",
+                "nombre": "Filip Đuričić",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SRB9",
-                "nombre": "  Nemanja Gudelj",
+                "nombre": "Nemanja Gudelj",
                 "existe": false,
                 "repetido": 0
               },
@@ -3535,49 +3585,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "SUI1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI3",
-                "nombre": "  Yann Sommer",
+                "nombre": "Yann Sommer",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI4",
-                "nombre": "  Gregor Kobel",
+                "nombre": "Gregor Kobel",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI5",
-                "nombre": "  Manuel Akanji",
+                "nombre": "Manuel Akanji",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI6",
-                "nombre": "  Nico Elvedi",
+                "nombre": "Nico Elvedi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI7",
-                "nombre": "  Kevin Mbabu",
+                "nombre": "Kevin Mbabu",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI8",
-                "nombre": "  Ricardo Rodríguez",
+                "nombre": "Ricardo Rodríguez",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "SUI9",
-                "nombre": "  Fabian Schär",
+                "nombre": "Fabian Schär",
                 "existe": false,
                 "repetido": 0
               },
@@ -3657,49 +3707,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "CMR1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR3",
-                "nombre": "  André Onana",
+                "nombre": "André Onana",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR4",
-                "nombre": "  Devis Epassy",
+                "nombre": "Devis Epassy",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR5",
-                "nombre": "  Jean-Charles Castelletto",
+                "nombre": "Jean-Charles Castelletto",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR6",
-                "nombre": "  Collins Fai",
+                "nombre": "Collins Fai",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR7",
-                "nombre": "  Olivier Mbaizo",
+                "nombre": "Olivier Mbaizo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR8",
-                "nombre": "  Harold Moukoudi",
+                "nombre": "Harold Moukoudi",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "CMR9",
-                "nombre": "  Michael Ngadeu",
+                "nombre": "Michael Ngadeu",
                 "existe": false,
                 "repetido": 0
               },
@@ -3784,49 +3834,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "POR1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR3",
-                "nombre": "  Diogo Costa",
+                "nombre": "Diogo Costa",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR4",
-                "nombre": "  Rui Patrício",
+                "nombre": "Rui Patrício",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR5",
-                "nombre": "  João Cancelo",
+                "nombre": "João Cancelo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR6",
-                "nombre": "  José Fonte",
+                "nombre": "José Fonte",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR7",
-                "nombre": "  Nuno Mendes",
+                "nombre": "Nuno Mendes",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR8",
-                "nombre": "  Pepe",
+                "nombre": "Pepe",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "POR9",
-                "nombre": "  Raphaël Guerreiro",
+                "nombre": "Raphaël Guerreiro",
                 "existe": false,
                 "repetido": 0
               },
@@ -3906,49 +3956,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "GHA1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA3",
-                "nombre": "  Joe Wollacott",
+                "nombre": "Joe Wollacott",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA4",
-                "nombre": "  Richard Ofori",
+                "nombre": "Richard Ofori",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA5",
-                "nombre": "  Daniel Amartey",
+                "nombre": "Daniel Amartey",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA6",
-                "nombre": "  Abdul-Rahman Baba",
+                "nombre": "Abdul-Rahman Baba",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA7",
-                "nombre": "  Alexander Djiku",
+                "nombre": "Alexander Djiku",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA8",
-                "nombre": "  Gideon Mensah",
+                "nombre": "Gideon Mensah",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "GHA9",
-                "nombre": "  Jonathan Mensah",
+                "nombre": "Jonathan Mensah",
                 "existe": false,
                 "repetido": 0
               },
@@ -4028,49 +4078,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "URU1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU3",
-                "nombre": "  Fernando Muslera",
+                "nombre": "Fernando Muslera",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU4",
-                "nombre": "  Sergio Rochet",
+                "nombre": "Sergio Rochet",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU5",
-                "nombre": "  Ronald Araújo",
+                "nombre": "Ronald Araújo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU6",
-                "nombre": "  Martín Cáceres",
+                "nombre": "Martín Cáceres",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU7",
-                "nombre": "  José María Giménez",
+                "nombre": "José María Giménez",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU8",
-                "nombre": "  Diego Godín",
+                "nombre": "Diego Godín",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "URU9",
-                "nombre": "  Mathías Olivera",
+                "nombre": "Mathías Olivera",
                 "existe": false,
                 "repetido": 0
               },
@@ -4150,49 +4200,49 @@ class Data {
             "cromos": [
               {
                 "codigo": "KOR1",
-                "nombre": "  Logo Equipo",
+                "nombre": "Logo Equipo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR3",
-                "nombre": "  Seung-gyu Kim",
+                "nombre": "Seung-gyu Kim",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR4",
-                "nombre": "  Hyeon-woo Jo",
+                "nombre": "Hyeon-woo Jo",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR5",
-                "nombre": "  Chul Hong",
+                "nombre": "Chul Hong",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR6",
-                "nombre": "  Tae-hwan Kim",
+                "nombre": "Tae-hwan Kim",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR7",
-                "nombre": "  Min-jae Kim",
+                "nombre": "Min-jae Kim",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR8",
-                "nombre": "  Young-gwon Kim",
+                "nombre": "Young-gwon Kim",
                 "existe": false,
                 "repetido": 0
               },
               {
                 "codigo": "KOR9",
-                "nombre": "  Jin-su Kim",
+                "nombre": "Jin-su Kim",
                 "existe": false,
                 "repetido": 0
               },

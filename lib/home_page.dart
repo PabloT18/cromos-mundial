@@ -1,9 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mundial_cromos/logic/app_bloc.dart';
 import 'package:mundial_cromos/models/cromo.dart';
 import 'package:mundial_cromos/routs.dart';
+import 'package:mundial_cromos/widgets/alert_share.dart';
+import 'package:mundial_cromos/widgets/image_custom.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -15,6 +16,22 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mundial Qatar'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                // await Share.share('check out my website https://example.com');
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value: BlocProvider.of<AppBloc>(context),
+                      child: const CustomAlertDialog(),
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.share))
+        ],
       ),
       body: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
@@ -38,22 +55,26 @@ class HomePage extends StatelessWidget {
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
-                ListTile(
-                  title: const Text(
-                    'Cromos Repetidos:',
-                    style: TextStyle(fontSize: 20),
+                Card(
+                  clipBehavior: Clip.hardEdge,
+                  child: ListTile(
+                    title: const Text(
+                      'Cromos Repetidos:',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    trailing: Text(
+                      '${state.album!.repetidos_total}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.repetidosPage),
                   ),
-                  trailing: Text(
-                    '${state.album!.repetidos_total}',
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  onTap: () =>
-                      Navigator.pushNamed(context, AppRoutes.repetidosPage),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Card(
+                      clipBehavior: Clip.hardEdge,
                       child: ExpansionTile(
                         title: const Text(
                           'Secciones Especiales',
@@ -81,6 +102,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
                 ...state.album!.grupos.map((grupo) => Card(
+                      clipBehavior: Clip.hardEdge,
                       child: ExpansionTile(
                         // key: GlobalKey(),
                         key: PageStorageKey(grupo.nombre),
@@ -112,7 +134,7 @@ class HomePage extends StatelessWidget {
                 OutlinedButton(
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        duration: const Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 2500),
                         content: SizedBox(
                           height: 50,
                           child: Column(
@@ -172,33 +194,6 @@ class EquipoWidget extends StatelessWidget {
         Navigator.pushNamed(context, AppRoutes.seccionPage, arguments: equipo);
         context.read<AppBloc>().add(OnGetequipoSelect(equipo: equipo));
       },
-    );
-  }
-}
-
-class CustomImage extends StatelessWidget {
-  const CustomImage({
-    Key? key,
-    required this.url,
-    this.height = 25,
-    this.width = 35,
-  }) : super(key: key);
-
-  final String url;
-  final double height;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: CachedNetworkImage(
-        imageUrl: url,
-        placeholder: (context, url) => const CircularProgressIndicator(),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
-        fit: BoxFit.fill,
-      ),
     );
   }
 }
