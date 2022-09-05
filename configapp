@@ -1,0 +1,75 @@
+* Icon APp
+    flutter icon 
+
+* Name APP
+    use package rename
+    flutter pub global activate rename
+    flutter pub global run rename --appname "Album Mundial 2022"
+    flutter pub global run rename --bundleId com.dev.patp.albummundial
+
+
+* Frimar la aplicacion
+
+    Enabling Material Components
+    Add the dependency on Android’s Material in <my-app>/android/app/build.gradle:
+        dependencies {
+            // ...
+            implementation 'com.google.android.material:material:<version>'
+            // ...
+        }
+
+
+        implementation("com.google.android.material:material:1.6.1")
+
+
+    Frimar 
+    Crear un archivo key.properties
+
+        storePassword=]6Ey3$Wjf[ZE!u`^
+        keyPassword=]6Ey3$Wjf[ZE!u`^
+        keyAlias=upload
+        storeFile=/Users/pablo/Documents/dev/flutter/mundial_cromos/keys/upload-keystore.jks
+
+
+keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
+keytool -importkeystore -srckeystore ./upload-keystore.jks -destkeystore ./pcstore.p12 -deststoretype PKCS12
+
+La buena 
+/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/bin/keytool -genkey -v -keystore ~/pc-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias pckey
+
+cambiar el 
+        keyAlias=pckey
+
+    Llenar los datoa copiar el archivo generado a una ruta del proyecto. 
+
+
+    Configuruar la firma en el gradle 
+
+    Add the keystore information from your properties file before the android block:
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+    Luego remplazar la etiqueta de buildTypes con 
+     signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
+   }
+   buildTypes {
+       release {
+           signingConfig signingConfigs.release
+       }
+   }
+
+
+
+flutter clean 
+flutter build appbundle 
